@@ -2,7 +2,7 @@ import { CommonModule } from '@angular/common';
 import { Component } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { RouterOutlet } from '@angular/router';
-import OpenAI from 'openai';
+import { HeaderComponent } from './common/header/header.component';
 
 @Component({
   selector: 'app-root',
@@ -11,10 +11,11 @@ import OpenAI from 'openai';
     RouterOutlet,
     CommonModule,
     FormsModule,
+    HeaderComponent
   ],
   templateUrl: './app.component.html',
   styleUrl: './app.component.css'
 })
 export class AppComponent {
-  title = 'doc-search-bot';
+  title = 'Ventor';
 }

@@ -1,0 +1,15 @@
+.card-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #f0f0f0;    
+    padding: 2px 5px;
+  }
+  
+  .left-content {
+    flex: 1; /* Grow to take remaining space */
+  }
+  
+  .right-content {
+    margin-left: 10px;
+  }

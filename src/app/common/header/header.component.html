@@ -1,0 +1,38 @@
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+  <div class="container">
+    <a class="navbar-brand" href="#">
+      <img
+        src="assets/Images/logo.png"
+        height="30"
+        class="d-inline-block align-top"
+        alt=""
+      /> entor
+    </a>
+    <button
+      class="navbar-toggler"
+      type="button"
+      data-toggle="collapse"
+      data-target="#navbarNav"
+      aria-controls="navbarNav"
+      aria-expanded="false"
+      aria-label="Toggle navigation"
+    >
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNav">
+      <div class="pull-right">
+        <ul class="navbar-nav ml-auto">
+          <li class="nav-item">
+            <a class="nav-link" [routerLink]="['/forms-list']">Forms</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" [routerLink]="['/vendors-list']">Vendors</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link"[routerLink]="['/customers-list']">Customers</a>
+          </li>       
+        </ul>
+      </div>
+    </div>
+  </div>
+</nav>

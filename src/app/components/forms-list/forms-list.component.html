@@ -1,0 +1,56 @@
+<div class="right-content">
+    <p-button
+      [style]="{ float: 'right' }"
+      label="Create-form"
+      icon="pi pi-plus"
+      [routerLink]="['/create-form']"
+    />
+  </div>
+<p-card header="Forms List">
+    
+    <p-table
+    [value]="dataList"
+    [paginator]="true"
+    [rows]="5"
+    [first]="first"
+    [showCurrentPageReport]="true"
+    [tableStyle]="{ 'min-width': '50rem' }"
+    currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries"
+    (onPage)="pageChange($event)"
+    [rowsPerPageOptions]="[10, 25, 50]"
+  >
+    <ng-template pTemplate="header">
+      <tr>
+        <th style="width: 5%"><p-tableHeaderCheckbox /></th>
+        <th pSortableColumn="name" style="width: 25%">
+          Name <p-sortIcon field="name" />
+        </th>
+        <th pSortableColumn="created_date" style="width: 25%">
+          Date <p-sortIcon field="created_date" />
+        </th>
+        <th pSortableColumn="status" style="width: 25%">
+          Status <p-sortIcon field="status" />
+        </th>
+      </tr>
+    </ng-template>
+    <ng-template pTemplate="body" let-data let-i="rowIndex">
+      <tr>
+        <td>
+          {{ i + 1 }}
+          <p-tableCheckbox [value]="data" />
+        </td>
+        <td>{{ data.name }}</td>
+        <td>{{ data.created_date }}</td>
+        <td>{{ data.status }}</td>
+      </tr>
+    </ng-template>
+    <!-- <ng-template pTemplate="paginatorleft">
+          <p-button type="button" icon="pi pi-plus" styleClass="p-button-text" />
+      </ng-template>
+      <ng-template pTemplate="paginatorright">
+          <p-button type="button" icon="pi pi-cloud" styleClass="p-button-text" />
+      </ng-template> -->
+  </p-table>
+</p-card>
+
+

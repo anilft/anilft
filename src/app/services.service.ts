@@ -8,12 +8,8 @@ import { Observable } from 'rxjs';
 })
 export class ServicesService {
   private apiUrl = 'https://api.openai.com/v1/files';
-  private apiKey = 'sk-proj-PHEKbtk1pfgjk9pGUAYmT3BlbkFJb5NR5ADkS7s80baCPHx9'; // Ideally, store this securely
+  private apiKey = ''; // Ideally, store this securely
   constructor(private http: HttpClient) {}
-  // readonly configuration = new Configuration({
-  //   apiKey: 'sk-proj-PHEKbtk1pfgjk9pGUAYmT3BlbkFJb5NR5ADkS7s80baCPHx9',
-  // });
-  // readonly openai = new OpenAIApi(this.configuration);
   listFiles(): Observable<any> {
     const headers = new HttpHeaders({
       Authorization: `Bearer ${this.apiKey}`,

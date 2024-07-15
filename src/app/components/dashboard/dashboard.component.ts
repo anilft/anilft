@@ -324,31 +324,6 @@ export class DashboardComponent {
     }
   }
   searchData(searchVal: any) {
-    if (this.loginuser) {
-      this.openaiService.listFiles().subscribe(
-        (data: any) => {
-          this.searchStatus = true;
-          this.list_files = [];
-          var files: any[] = [];
-          data.data.forEach(
-            function (val: any) {
-              if (searchVal == val.purpose) {
-                files.push(val);
-              }
-            }.bind(this)
-          );
-          this.list_files = files;
-        },
-        (error) => {
-          console.error('Error fetching files:', error);
-        }
-      );
-    } else {
-      this.searchError = true;
-      setTimeout(() => {
-        this.searchError = false;
-      }, 1000);
-    }
   }
   logout() {
     sessionStorage.removeItem('loginUser');
@@ -369,20 +344,5 @@ export class DashboardComponent {
   }
 
   onSubmit(): void {
-    if (this.selectedFile) {
-      this.openaiService
-        .uploadFile(this.selectedFile, this.purposeVal)
-        .subscribe(
-          (response) => {
-            console.log('File uploaded successfully', response);
-            window.location.reload();
-          },
-          (error) => {
-            alert(error.error.error.message);
-          }
-        );
-    } else {
-      console.error('No file selected');
-    }
   }
 }

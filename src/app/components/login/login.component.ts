@@ -22,35 +22,7 @@ export class LoginComponent implements OnInit {
   public loginerror: any;
   constructor(private router: Router) {}
   ngOnInit(): void {
-    this.users = [
-      {
-        username: 'reddy@123.com',
-        password: 'Reddy123',
-        name: 'Narayana Reddy',
-        status: true,
-      },
-      {
-        username: 'akumar@provizit.com',
-        password: '12345',
-        name: 'Anil Kumar',
-        status: true,
-      }
-    ];
   }
   onSubmit() {
-    this.users.forEach((val) => {
-      if (
-        this.loginuser.username == val.username &&
-        this.loginuser.password == val.password
-      ) {
-        sessionStorage.setItem('loginUser', JSON.stringify(val));
-        this.router.navigate(['/']);
-      } else {
-        this.loginerror = true;
-        setTimeout(() => {
-          this.loginerror = false;
-        }, 1000);
-      }
-    });
   }
 }

@@ -22,7 +22,7 @@ export const routes: Routes = [
     component: FormsListComponent,
   },
   {
-    path: "view-form",
+    path: "view-form/:form_id",
     component: ViewFormComponent,
   },
   {

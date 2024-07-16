@@ -1,14 +1,13 @@
 <div class="right-content">
-    <p-button
-      [style]="{ float: 'right' }"
-      label="Create-form"
-      icon="pi pi-plus"
-      [routerLink]="['/create-form']"
-    />
-  </div>
+  <p-button
+    [style]="{ float: 'right' }"
+    label="Create-form"
+    icon="pi pi-plus"
+    [routerLink]="['/create-form']"
+  />
+</div>
 <p-card header="Forms List">
-    
-    <p-table
+  <p-table
     [value]="dataList"
     [paginator]="true"
     [rows]="5"
@@ -39,18 +38,18 @@
           {{ i + 1 }}
           <p-tableCheckbox [value]="data" />
         </td>
-        <td>{{ data.name }}</td>
+        <td style="cursor: pointer" [routerLink]="['/view-form', i]">
+          {{ data.name }}
+        </td>
         <td>{{ data.created_date }}</td>
-        <td>{{ data.status }}</td>
+        <td>
+          <p-toggleButton
+            [(ngModel)]="data.status"
+            onLabel="On"
+            offLabel="Off"
+          />
+        </td>
       </tr>
     </ng-template>
-    <!-- <ng-template pTemplate="paginatorleft">
-          <p-button type="button" icon="pi pi-plus" styleClass="p-button-text" />
-      </ng-template>
-      <ng-template pTemplate="paginatorright">
-          <p-button type="button" icon="pi pi-cloud" styleClass="p-button-text" />
-      </ng-template> -->
   </p-table>
 </p-card>
-
-

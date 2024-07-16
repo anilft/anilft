@@ -9,7 +9,12 @@ import { CheckboxModule } from 'primeng/checkbox';
 import { DropdownModule } from 'primeng/dropdown';
 import { InputTextareaModule } from 'primeng/inputtextarea';
 import { RadioButtonModule } from 'primeng/radiobutton';
-import { CdkDragDrop, DragDropModule, moveItemInArray, transferArrayItem } from '@angular/cdk/drag-drop';
+import {
+  CdkDragDrop,
+  DragDropModule,
+  moveItemInArray,
+  transferArrayItem,
+} from '@angular/cdk/drag-drop';
 import { ButtonModule } from 'primeng/button';
 import { FloatLabelModule } from 'primeng/floatlabel';
 import { CardModule } from 'primeng/card';
@@ -30,26 +35,34 @@ import { CardModule } from 'primeng/card';
     DragDropModule,
     ButtonModule,
     FloatLabelModule,
-    CardModule],
+    CardModule,
+  ],
   templateUrl: './createform.component.html',
-  styleUrl: './createform.component.css'
+  styleUrl: './createform.component.css',
 })
 export class CreateformComponent {
-
   public dummy_inputTypes: any;
   public minputTypes: any;
   public minputType: any;
   public select_inputType: any;
-  public blog: any={};
+  public blog: any = {};
+  public blogs: any[] = [];
   public selectedElement: any;
-  constructor() {
-  }
+  constructor() {}
   ngOnInit(): void {
+    let formsList: any[] = [];
+    let formsData = localStorage.getItem('forms')!;
+    if (formsData !== null) {
+      formsList = JSON.parse(formsData);
+      formsList.forEach((val: any) => {
+        this.blogs.push(val);
+      });
+    }
     this.blog = {
-      userid: "",
+      userid: '',
       status: true,
       admin: false,
-      name: "",
+      name: '',
       forms: [],
     };
     this.dummy_inputTypes = [
@@ -272,7 +285,10 @@ export class CreateformComponent {
       this.createnewinputTypes();
     }, 1000);
   }
-  onNoClick(): void {}
+  onNoClick(): void {
+    this.blogs.push(this.blog);
+    localStorage.setItem('forms', JSON.stringify(this.blogs));
+  }
   createFormAdd() {
     let newForm = {
       name: '',
@@ -288,16 +304,19 @@ export class CreateformComponent {
   drop(event: CdkDragDrop<any[]>) {
     //console.log(event);
     if (event.previousContainer === event.container) {
-      moveItemInArray(event.container.data, event.previousIndex, event.currentIndex);
+      moveItemInArray(
+        event.container.data,
+        event.previousIndex,
+        event.currentIndex
+      );
     } else {
       transferArrayItem(
         event.previousContainer.data,
         event.container.data,
         event.previousIndex,
-        event.currentIndex,
+        event.currentIndex
       );
     }
   }
-  onSubmit(): void {
-  }
+  onSubmit(): void {}
 }

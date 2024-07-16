@@ -1,1 +1,62 @@
-<h4>Dashboard</h4>
+<div class="row">
+  <div class="col-6">
+    <div class="card">
+      <p-chart
+        type="bar"
+        [data]="basicData"
+        [options]="basicOptions"
+        [height]="'50vh'"
+      />
+    </div>
+  </div>
+  <div class="col-6">
+    <div class="card">
+      <p-chart
+        type="pie"
+        [data]="basicData"
+        [options]="basicOptions"
+        [height]="'50vh'"
+      />
+    </div>
+  </div>
+  <div class="col-6">
+    <div class="card">
+      <p-chart
+        type="doughnut"
+        [data]="basicData"
+        [options]="basicOptions"
+        [height]="'50vh'"
+      />
+    </div>
+  </div>
+  <div class="col-6">
+    <div class="card">
+      <p-chart
+        type="line"
+        [data]="basicData"
+        [options]="basicOptions"
+        [height]="'50vh'"
+      />
+    </div>
+  </div>
+  <div class="col-6">
+    <div class="card">
+      <p-chart
+        type="polarArea"
+        [data]="basicData"
+        [options]="basicOptions"
+        [height]="'50vh'"
+      />
+    </div>
+  </div>
+  <div class="col-6">
+    <div class="card">
+      <p-chart
+        type="radar"
+        [data]="basicData"
+        [options]="basicOptions"
+        [height]="'50vh'"
+      />
+    </div>
+  </div>
+</div>

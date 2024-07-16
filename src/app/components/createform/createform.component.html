@@ -1,65 +1,68 @@
-<p-card header="Create Form" class="mt-2">
+<p-card
+  header="Create Form"
+  styleClass="mt-2"
+  [style]="{ width: '50%', margin: 'auto' }"
+>
   <div class="row container">
-    <div class="col-md-3 col-sm-12"></div>
-    <div class="col-md-3 col-sm-12"></div>
     <ng-container *ngFor="let nblog of blog.forms; let ii = index">
-      <div class="col-md-12 col-sm-12">
-        <h5>Form {{ ii + 1 }}.</h5>
+      <div class="col-md-12 col-sm-12 mb-3">
         <div class="flex flex-column gap-2">
-          <label>Enter Form Name</label>
-          <input pInputText [(ngModel)]="nblog.name" required />
+          <p-floatLabel>
+            <input pInputText id="username" [(ngModel)]="nblog.name" required />
+            <label for="username">Enter Form Name</label>
+          </p-floatLabel>
         </div>
       </div>
       <ng-container *ngFor="let inputType of nblog.inputTypes; let iii = index">
         <div class="col-md-12 col-sm-12" *ngIf="inputType.type"></div>
-        <div class="col-md-6 col-sm-12">
-          <b>{{ iii + 1 }}) </b>
-          <div class="flex flex-column gap-2">
-            <label>Enter {{ inputType.name }} Label</label>
-            <input pInputText [(ngModel)]="inputType.label" required />
+        <div class="col-md-12 col-sm-12">
+          <div class="col-md-6 col-sm-12 me-2">
+            <div class="flex flex-column mt-3">
+              <label>{{ iii + 1 }}) Enter {{ inputType.name }} Label</label>
+              <input pInputText [(ngModel)]="inputType.label" required />
+            </div>
+            <p-checkbox
+              [binary]="true"
+              [(ngModel)]="inputType.numeric"
+              label="Numeric"
+              *ngIf="inputType.value == 1"
+            />
+            <br *ngIf="inputType.value == 1" />
+
+            <p-checkbox
+              [binary]="true"
+              [(ngModel)]="inputType.email"
+              label="Email validation"
+              *ngIf="inputType.value == 1"
+            />
+            <br *ngIf="inputType.value == 1" />
+            <p-checkbox
+              [binary]="true"
+              [(ngModel)]="inputType.mobile"
+              label=" Mobile validation"
+              *ngIf="inputType.value == 1"
+            />
+            <br *ngIf="inputType.value == 1" />
+            <p-checkbox
+              [binary]="true"
+              [(ngModel)]="inputType.calender"
+              label="Calender"
+              *ngIf="inputType.value == 1"
+            />
+            <br *ngIf="inputType.value == 1" />
+            <p-checkbox
+              [binary]="true"
+              [(ngModel)]="inputType.required"
+              label="Required"
+            />
+            <br />
+            <p-checkbox
+              [binary]="true"
+              [(ngModel)]="inputType.active"
+              label="Active"
+            />
           </div>
-          <p-checkbox
-            [binary]="true"
-            [(ngModel)]="inputType.numeric"
-            label="Numeric"
-            *ngIf="inputType.value == 1"
-          />
-          <br *ngIf="inputType.value == 1" />
-
-          <p-checkbox
-            [binary]="true"
-            [(ngModel)]="inputType.email"
-            label="Email validation"
-            *ngIf="inputType.value == 1"
-          />
-          <br *ngIf="inputType.value == 1" />
-          <p-checkbox
-            [binary]="true"
-            [(ngModel)]="inputType.mobile"
-            label=" Mobile validation"
-            *ngIf="inputType.value == 1"
-          />
-          <br *ngIf="inputType.value == 1" />
-          <p-checkbox
-            [binary]="true"
-            [(ngModel)]="inputType.calender"
-            label="Calender"
-            *ngIf="inputType.value == 1"
-          />
-          <br *ngIf="inputType.value == 1" />
-          <p-checkbox
-            [binary]="true"
-            [(ngModel)]="inputType.required"
-            label="Required"
-          />
-          <br />
-          <p-checkbox
-            [binary]="true"
-            [(ngModel)]="inputType.active"
-            label="Active"
-          />
         </div>
-
         <div class="col-md-12 col-sm-12" *ngIf="inputType.type"></div>
         <ng-container *ngFor="let input of inputType.feilds; let i = index">
           <div class="col-md-6 col-sm-12" *ngIf="inputType.type">
@@ -75,12 +78,12 @@
           </div>
         </ng-container>
         <div class="col-md-6 col-sm-12" *ngIf="inputType.type">
-          <button
-            class="btn btn-outline-success my-2 my-sm-0 num-fnt mr-4"
+          <p-button
+            label="Add More"
+            icon="pi pi-plus"
             (click)="eleLableAdd(ii, iii)"
-          >
-            Add More
-          </button>
+            size="small"
+          />
         </div>
         <div class="col-md-12 col-sm-12" *ngIf="inputType.type"></div>
       </ng-container>
@@ -100,8 +103,12 @@
       </div>
     </ng-container>
   </div>
-  <div class="btn-block text-center">
-    <p-button label="Done" icon="pi pi-check" (click)="onNoClick()" />
+  <div class="btn-block text-center mt-3">
+    <p-button
+      label="Done"
+      icon="pi pi-check"
+      (click)="onNoClick()"
+      size="small"
+    />
   </div>
 </p-card>
-
